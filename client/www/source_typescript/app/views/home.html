@@ -1,0 +1,58 @@
+<template id="home_template">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Inicio"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			<page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+				<!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, sapiente odit cumque commodi adipisci nostrum consectetur soluta? Suscipit, iure, rerum. Fuga laborum, aperiam incidunt minima. Inventore sit labore voluptatum eligendi? -->
+                    <section class="statistics text-center">
+                        <div class="data">
+                            <div>
+                              <!-- <h2>Estadis</h2> -->
+                              <div class="row">
+                                
+                                <div class="col-md-3 col-sm-6 col-xs-12" style="display: inline-block; float: none;" v-if="users">
+                                  <div class="stats">
+                                    <i class="fa fa-users fa-5x"></i>
+                                    <p>{{users}}</p>
+                                    <span>Usuarios Registrados</span>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-3 col-sm-6 col-xs-12" style="display: inline-block; float: none;" v-if="questions">
+                                  <div class="stats">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                    <p>{{questions}}</p>
+                                    <span>Preguntas disponibles</span>
+                                  </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                        </div>
+                    </section>
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

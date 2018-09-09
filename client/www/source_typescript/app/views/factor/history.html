@@ -1,0 +1,187 @@
+<template id="factor_history">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Factor Principal"></breadcrumb>
+
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+    		    <div class="row" v-for="(factor,i) in primary_factors">
+                <div class="col-md-12">
+                    <h1 style="margin-bottom: 10px; display: block; margin-top: -6px;">
+                        <b>{{factor.nombre_categoria}}</b>
+                    </h1>
+
+                    <div class="panel panel-white" style="margin-top: 10px;">
+     
+                        <div class="quiz" v-for="(question,index) in factor.questions">
+      
+                            <h2 class="quiz-question">
+                                        {{question.titulo}} - {{question.answer.respuesta}}
+                            </h2>
+                            <ul data-quiz-question="1">
+                                <li class="quiz-answer" data-quiz-answer="a">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :value="5" :checked="question.answer.respuesta == 5">Completamente de acuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="b">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :value="4" :checked="question.answer.respuesta == 4">De acuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="c">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :value="3" :checked="question.answer.respuesta == 3">Ni de acuerdo ni en desacuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="d">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :value="2" :checked="question.answer.respuesta == 2">En desacuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="e">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :value="1" :checked="question.answer.respuesta == 1">Completamente en desacuerdo
+                                    </label>
+                                </li>
+                            </ul>
+                              
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                
+                <div v-if="factors_time" v-for="(fac_time,i) in factors_time">
+                    <h4 v-if="factors_time.length > 0" style="border-bottom: 1px solid lightgrey;font-size: 26px; font-weight: bold; text-align: center;">Encuesta Secundaria - {{fac_time.date_initial}} - {{fac_time.date}}</h4>
+                    <div class="row" v-for="(factor,i) in fac_time.factors" v-if="factor && factor.questions.length>0"> 
+                     <!-- && factor.has_answer == 1 -->
+                    <div class="col-md-12">
+                        <h1 style="margin-bottom: 10px; display: block; margin-top: -6px;">
+                            <b>{{factor.nombre_categoria}}</b>
+                        </h1>
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+         
+                            <div class="quiz" v-for="(question,index) in factor.questions" v-if="question && question.answer">
+          
+                            <h2 class="quiz-question">
+                                {{question.titulo}}
+                            </h2>
+                            <ul data-quiz-question="1">
+                                <li class="quiz-answer" data-quiz-answer="a">
+                                    <label class="radio-inline">
+                                         <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="5" :checked="question.answer.respuesta == 5">Completamente de acuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="b">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="4" :checked="question.answer.respuesta == 4">De acuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="c">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="3" :checked="question.answer.respuesta == 3">Ni de acuerdo ni en desacuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="d">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="2" :checked="question.answer.respuesta == 2">En desacuerdo
+                                    </label>
+                                </li>
+                                <li class="quiz-answer" data-quiz-answer="e">
+                                    <label class="radio-inline">
+                                        <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="1" :checked="question.answer.respuesta == 1">Completamente en desacuerdo
+                                    </label>
+                                </li>
+                            </ul>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+<!-- 
+                <h4 v-if="secundary_factors.length > 0">Factor Secundario</h4>
+                <div class="row" v-for="(factor,i) in secundary_factors" v-if="factor && factor.has_answer == 1">
+                <div class="col-md-12">
+                    <h1 style="margin-bottom: 10px; display: block; margin-top: -6px;">
+                        <b>{{factor.nombre_categoria}}</b>
+                    </h1>
+
+                    <div class="panel panel-white" style="margin-top: 10px;">
+     
+                        <div class="quiz" v-for="(question,index) in factor.questions" v-if="question && question.answer">
+      
+                        <h2 class="quiz-question">
+                            {{question.titulo}}
+                        </h2>
+                        <ul data-quiz-question="1">
+                            <li class="quiz-answer" data-quiz-answer="a">
+                                <label class="radio-inline">
+                                     <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="5" :checked="question.answer.respuesta == 5">Completamente de acuerdo
+                                </label>
+                            </li>
+                            <li class="quiz-answer" data-quiz-answer="b">
+                                <label class="radio-inline">
+                                    <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="4" :checked="question.answer.respuesta == 4">De acuerdo
+                                </label>
+                            </li>
+                            <li class="quiz-answer" data-quiz-answer="c">
+                                <label class="radio-inline">
+                                    <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="3" :checked="question.answer.respuesta == 3">Ni de acuerdo ni en desacuerdo
+                                </label>
+                            </li>
+                            <li class="quiz-answer" data-quiz-answer="d">
+                                <label class="radio-inline">
+                                    <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="2" :checked="question.answer.respuesta == 2">En desacuerdo
+                                </label>
+                            </li>
+                            <li class="quiz-answer" data-quiz-answer="e">
+                                <label class="radio-inline">
+                                    <input type="radio" disabled :name="'answer['+i+']['+index+'][0]'" :value="1" :checked="question.answer.respuesta == 1">Completamente en desacuerdo
+                                </label>
+                            </li>
+                        </ul>
+                              
+                        </div>
+                    </div>
+                </div>
+                </div> -->
+
+
+
+                <div class="row" style="text-align: center;">
+                    <router-link :to="{ path: '/factor/menu'}" class="btn btn-primary">
+                        Regresar
+                    </router-link>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

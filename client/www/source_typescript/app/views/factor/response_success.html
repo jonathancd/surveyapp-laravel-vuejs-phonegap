@@ -1,0 +1,75 @@
+<template id="response_success">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Home"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+            	<div id="success-wrap">
+				    <div id="content">
+
+				      	<div class="notify successbox">
+				        	<h1 class="success-title">Exito!</h1>
+				        	<span class="alerticon">
+				        		<router-link :to="{ path: '/factor/menu'}">
+				        			<img src="./assets/theme/assets/images/check.png" alt="checkmark"/>
+				        		</router-link>
+				        	</span>
+
+				        	<p class="success-info">
+				        		Sus respuestas han sido enviadas.
+				        	</p>
+				      	</div>
+
+				    </div><!-- @end #content -->
+			  	</div><!-- @end #w -->
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

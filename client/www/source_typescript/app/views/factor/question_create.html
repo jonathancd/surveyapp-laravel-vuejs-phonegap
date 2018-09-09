@@ -1,0 +1,67 @@
+<template id="question_create">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Crear nueva pregunta"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			 <page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+
+              <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="panel-body  ">
+                        <form id="question_create" action="/question" method="POST">
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                              <label>Titulo</label>
+                              <input type="text" class="form-control" name="titulo" placeholder="Título de la pregunta">
+                              <input type="hidden" class="form-control" name="factor_id" :value="factor_id">
+                            </div>
+                        </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                              <button type="button" class="btn btn-primary" @click="save">Completar solicitud</button>
+                            </div>
+                        </div>
+                        </div>
+
+                        </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

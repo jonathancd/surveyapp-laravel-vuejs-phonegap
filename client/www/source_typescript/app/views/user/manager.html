@@ -1,0 +1,97 @@
+<template id="user_manager">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Gestion de usuarios"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			<page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+				<div class="row">
+                    <div class="col-md-12">
+                        <router-link :to="{ path: '/user/create'}" class="btn btn-primary">Crear nuevo usuario</router-link>
+
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="table-responsive">
+
+
+                           <table class="table table-striped table-bordered table-hover table-condensed">
+                               <tr>
+                                   <td>
+                                       <b>Nombre</b>
+                                   </td>
+                                   <td>
+                                       <b>Codigo Estudiante</b>
+                                   </td>
+                                   <td>
+                                       <b>F. Nacimiento</b>
+                                   </td>
+                                   <td>
+                                       <b>Programa</b>
+                                   </td>
+                                   <td>
+                                       <b>Semestre</b>
+                                   </td>
+                                   <td>
+                                       <b>Telefono</b>
+                                   </td>
+                                   <td>
+                                       <b>Opciones</b>
+                                   </td>
+                               </tr>
+                               <tr v-if="users.length>=1" v-for="user in users">
+                                   <td>
+                                        {{user.name}} <b>Estrato: </b> {{user.estrato}} <b>({{user.genero}})</b>
+                                        <br>
+                                        <b>NID:</b> {{user.ci}}
+                                        <br>
+                                        {{user.email}}
+
+                                    </td>
+                                   <td>{{user.codigo_estudiante}}</td>
+                                   <td>{{user.fecha_nacimiento}}</td>
+
+                                   <td v-if="user.program">{{user.program.name}}</td>
+                                   <td v-else></td>
+
+                                   <td>{{user.semestre}}</td>
+                                   <td>{{user.telefono}}</td>
+                                   <td>
+                                        <a @click="destroy(user.id)"  class="btn btn-block btn-xs btn-default">Eliminar</a>
+                                        <router-link :to="{ path: '/user/edit/'+user.id}" class="btn btn-block btn-xs btn-default">Modificar</router-link>
+
+                                        <router-link :to="{ path: '/user/show/'+user.id}" class="btn btn-block btn-xs btn-default">Ver detalles</router-link>
+                                        <!-- <a href="" class="btn btn-block btn-xs btn-default">Ver detalles</a> -->
+                                   </td>
+                               </tr>
+                           </table>
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

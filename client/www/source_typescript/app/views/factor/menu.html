@@ -1,0 +1,64 @@
+<template id="factor_menu">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Home"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <div id="success-wrap">
+                    <div id="content">
+
+                        <div class="notify successbox" v-if="factor">
+
+                            <div class="row" style="text-align: center;" v-if="factor.ready == 0">
+                                <router-link :to="{ path: '/factor/response'}" class="btn btn-primary btn-menu">
+                                    Responder encuesta
+                                </router-link>
+                            </div>
+
+
+                            <div class="row" style="text-align: center;" v-if="factor.ready == 1 && factor_time">
+                                <a class="btn btn-primary btn-menu" @click="today_question()">Pregunta del día</a>
+                            </div>
+
+
+                            <div class="row" style="text-align: center;" v-if="factor.ready == 1">
+                                <router-link :to="{ path: '/factor/response/history'}" class="btn btn-success btn-menu">
+                                    Historial
+                                </router-link>
+                            </div>
+
+
+                            <div class="row" style="text-align: center;" v-if="factor.ready == 1">
+                                <router-link :to="{ path: '/factor/charts'}" class="btn btn-primary btn-menu">
+                                    Estadísticas
+                                </router-link>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+				
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

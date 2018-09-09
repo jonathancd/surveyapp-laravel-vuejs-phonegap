@@ -1,0 +1,106 @@
+<template id="user_show">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Editar usuario"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			 <page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+
+              <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="panel-body  ">
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>Nombre completo</label>
+                              <span{{user_show.name}}</span>
+                            </div>
+                            <div class="col-md-4">
+                              <label>Email</label>
+                              <span>{{user_show.email}}</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>Numero de identificacion</label>
+                              <span>{{user_show.ci}}</span>
+                            </div>
+                            <div class="col-md-4">
+                              <label>Codigo estudiante</label>
+                              <span>{{user_show.codigo_estudiante}}</span>
+                            </div>
+                            <div class="col-md-4">
+                              <label>Fecha de nacimiento</label>
+                              <span>{{user_show.fecha_nacimiento}}</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>Genero</label>
+                              <select name="genero" class="form-control" id="">
+                                <span>{{user_show.genero}}</span>
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                              <label>Estrato</label>
+                              <span>{{user_show.estrato}}</span>
+                            </div>
+                            <div class="col-md-4">
+                              <label>Programa</label>
+                              <span>{{user_show.programa}}</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>semestre</label>
+                              <span>{{user_show.semestre}}</span>
+                            </div>
+                            <div class="col-md-4">
+                              <label>telefono</label>
+                              <span>{{user_show.telefono}}</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

@@ -1,0 +1,67 @@
+<template id="login_template">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Inicio de sesión"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			<page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+
+					<div class="panel panel-body login-form">
+					<form id="login" action="/auth">
+						<div class="text-center">
+							<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+							<h5 class="content-group">Inicia sesión con tu cuenta <small class="display-block">Ingresa tus credenciales</small></h5>
+						</div>
+
+						<div class="form-group has-feedback has-feedback-left">
+							<input type="text" name="email" class="form-control" placeholder="Email" value="rita_admin@gmail.com">
+							<div class="form-control-feedback">
+								<i class="icon-user text-muted"></i>
+							</div>
+						</div>
+
+						<div class="form-group has-feedback has-feedback-left">
+							<input type="password" class="form-control" name="password" placeholder="Password"  value="1024456">
+							<div class="form-control-feedback">
+								<i class="icon-lock2 text-muted"></i>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<button type="button" @click="login()" class="btn btn-primary btn-block">Iniciar sesión <i class="icon-circle-right2 position-right"></i></button>
+						</div>
+					</form>
+					</div>
+
+				</div>
+			</div>
+
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

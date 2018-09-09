@@ -1,0 +1,79 @@
+<template id="report_manager">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Gestion de reportes"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			<page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+				<div class="row">
+                    <div class="col-md-12">
+                    <router-link :to="{ path: '/report/create'}" class="btn btn-primary">Crear reportes</router-link>
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="table-responsive">
+
+
+                           <table class="table table-striped table-bordered table-hover table-condensed">
+                               <tr>
+                                    <td>
+                                       <b>Nombre</b>
+                                    </td>
+                                    <td>
+                                       <b>Fecha</b>
+                                    </td>
+                                    <td>
+                                       <b>Tipo</b>
+                                    </td>
+                                    <td>
+                                       <b>Opciones</b>
+                                    </td>
+                               </tr>
+                               <tr v-for="report in reports" v-if="reports">
+                                    <td>
+                                      {{report.titulo}}
+                                    </td>
+                                    <td>
+                                      {{report.date}}
+                                    </td>
+
+                                    <td>
+                                      {{report.extension}}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <a :href="report.url" target="_blank" class="btn btn-xs btn-default" v-if="report.extension == 'PDF'">Ver</a>
+                                        <a :href="report.url" target="_blank" class="btn btn-xs btn-default" v-if="report.extension == 'Excel'">Descargar</a>
+                                        <a class="btn btn-xs btn-default" @click="destroy(report.id)">Eliminar</a>
+                                    </td>
+                               </tr>
+                           </table>
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

@@ -1,0 +1,83 @@
+<template id="factor_questions">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Gestion de preguntas"></breadcrumb>
+
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			<page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+		        <div class="row">
+                <div class="col-md-12">
+
+
+                    <h1 style="margin-bottom: 10px; display: block; margin-top: -6px;">
+  
+                        <b v-if="parent=='1'">Factor principal / {{factor.nombre_categoria}}</b>
+                        <b v-if="parent=='-1'">Factor Secundario / {{factor.nombre_categoria}}</b>
+                        
+                        <router-link :to="{ path: '/factor/question/create/'+factor_id}" component={question_create} class="btn btn-primary btn-sm" style="float: right;">Crear nueva pregunta </router-link>
+                    </h1>
+
+                    <div class="panel panel-white" style="margin-top: 10px;">
+                    <div class="table-responsive">
+
+                      <div >
+                       <table class="table table-striped table-bordered table-hover table-condensed">
+
+                            <tr style="border: 0'">
+                              <td style="padding: 0;">
+                                <table class="table table-striped table-hover table-condensed"  style="border: 0;">
+                                  <tr>
+                                    <td><b>Título</b></td>
+                                    <td><b>Opciones</b></td>
+                                  </tr>
+                                  <tr v-if="questions.length>=1" v-for="question in questions">
+                                    <td>
+                                      <b>{{question.titulo}}</b>
+                                    </td>
+                                    <td>
+                                      <router-link :to="{ path: '/factor/question/edit/'+question.id}" class="btn btn-xs btn-default">Editar</router-link>
+                                      <a class="btn btn-xs btn-default" @click="destroy(question.id)">Eliminar</a>
+                                    </td>
+                                  </tr>
+                                </table>
+
+                              </td>
+                            </tr>
+
+                       </table>
+                       </div>
+
+
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

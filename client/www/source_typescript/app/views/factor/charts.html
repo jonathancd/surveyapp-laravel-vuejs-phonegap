@@ -1,0 +1,75 @@
+<template id="factor_charts">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Estadisticas de Factores"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <div class="row" style="text-align: center;">
+                    <h4>Legenda</h4>
+
+                    <ul class="legend">
+                        <li><span class="muy_suficiente"></span> Muy suficiente</li>
+                        <li><span class="eficiente"></span> Suficiente</li>
+                        <li><span class="insuficiente"></span> Insuficiente</li>
+                        <li><span class="deficiente"></span> Deficiente</li>
+                        <li><span class="muy_deficiente"></span> Muy deficiente</li>
+                    </ul>
+                </div>
+
+
+                <div class="row" v-if="primary_results" style="margin-bottom: 25px;">
+                <div class="col-md-12">
+                    <h1 style="margin-bottom: 10px; display: block; margin-top: -6px;">
+                        Estadisticas de la encuesta principal
+                    </h1>
+
+                    <div class="panel panel-white" style="margin-top: 10px;">
+                        <canvas id="bar-chart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row" v-if="secundary_results" v-for="(results,i) in secundary_results" style="margin-bottom: 25px;">
+                <div class="col-md-12">
+                    <h1 style="margin-bottom: 10px; display: block; margin-top: -6px;">
+                        Estadisticas de la encuesta secundaria [ {{results.date_initial}} - {{results.date}}]
+                    </h1>
+
+                    <div class="panel panel-white" style="margin-top: 10px;">
+                        <canvas :id="'bar-chart-'+(i+1)" width="400" height="400"></canvas>
+                    </div>
+                </div>
+                </div>
+
+
+                <div class="row" style="text-align: center;">
+                    <router-link :to="{ path: '/factor/menu'}" class="btn btn-primary">
+                        Regresar
+                    </router-link>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

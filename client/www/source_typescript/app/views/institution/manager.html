@@ -1,0 +1,68 @@
+<template id="institution_manager">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Gestion de instituciones"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			<page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+				<div class="row">
+                    <div class="col-md-12">
+                        <router-link :to="{ path: '/institution/create'}" class="btn btn-primary">Crear nueva institucion</router-link>
+
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="table-responsive">
+
+
+                           <table class="table table-striped table-bordered table-hover table-condensed">
+                               <tr>
+                                   <td>
+                                       <b>Nombre</b>
+                                   </td>
+
+                                   <td>
+                                       <b>Opciones</b>
+                                   </td>
+                               </tr>
+                               <tr v-if="institutions.length >= 1" v-for="institution in institutions">
+                                   <td>
+                                        {{institution.name}}
+                                    </td>
+
+                                   <td>
+                                        <a @click="destroy(institution.id)"  class="btn btn-block btn-xs btn-default">Eliminar</a>
+                                        <router-link :to="{ path: '/institution/edit/'+institution.id}" class="btn btn-block btn-xs btn-default">Modificar</router-link>
+                                   </td>
+                               </tr>
+                           </table>
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

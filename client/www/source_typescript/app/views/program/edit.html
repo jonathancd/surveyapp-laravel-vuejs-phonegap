@@ -1,0 +1,65 @@
+<template id="program_edit">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Editar programa"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			 <page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+
+              <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="panel-body  ">
+                        <form id="program_edit" method="PUT" v-if="program_edit!=null" :action="'/program/'+program_edit.id">
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>Nombre</label>
+                              <input type="hidden" class="form-control" :value="program_edit.id" name="id">
+                              <input type="text" class="form-control" :value="program_edit.name" name="name" placeholder="Nombre del programa">
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                              <button type="button" class="btn btn-primary" @click="save">Completar solicitud</button>
+                            </div>
+                        </div>
+                        </div>
+
+                        </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

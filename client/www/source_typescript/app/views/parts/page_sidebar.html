@@ -1,0 +1,38 @@
+<template id="page_sidebar">
+    <div class="sidebar sidebar-main sidebar-default">
+
+    <!-- Main sidebar -->
+    <div v-if="user">
+        <div class="sidebar-content">
+
+            <!-- Main navigation -->
+            <div class="sidebar-category sidebar-category-visible">
+                <div class="category-title h6">
+                    <span>Menu Principal</span>
+                </div>
+
+
+
+                <div class="category-content no-padding">
+                    <ul class="navigation navigation-main navigation-accordion">
+
+                        <!-- Main -->
+                        <!-- <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li> -->
+                        <li class="active"><a href="#"> Inicio </a></li>
+                        <li><router-link :to="{ path: '/user/manager', params: {}}">Gestion de usuarios</router-link></li>
+                        <li><router-link :to="{ path: '/institution/manager', params: {}}">Gestion de instituciones</router-link></li>
+                        <li><router-link :to="{ path: '/program/manager', params: {}}">Gestion de programas</router-link></li>
+                        <li><router-link :to="{ path: '/factor/manager', params: {}}">Factores</router-link></li>
+                        <li><router-link :to="{ path: '/report/manager', params: {}}">Reportes</router-link></li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /main navigation -->
+
+        </div>
+    </div>
+    <!-- /main sidebar -->
+
+    </div>
+</template>

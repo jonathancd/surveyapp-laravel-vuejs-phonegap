@@ -1,0 +1,91 @@
+<template id="factor_response">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Factor Principal"></breadcrumb>
+
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <form id="factor_principal_response" action="/answer" method="POST">
+                    
+                    <div v-if="user">
+                        <input type="hidden" name="user_id" :value="user.id">
+                    </div>
+
+    		        <div class="row" v-for="(factor,i) in primary_factors">
+                    <div class="col-md-12">
+                        <h1 style="margin-bottom: 10px; display: block; margin-top: -6px;">
+                            <b>{{factor.nombre_categoria}}</b>
+                        </h1>
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+     
+                            <div class="quiz" v-for="(question,index) in factor.questions">
+      
+                                <h2 class="quiz-question">
+                                    {{question.titulo}}
+                                </h2>
+                                <ul data-quiz-question="1">
+                                    <li class="quiz-answer" data-quiz-answer="a">
+                                        <label class="radio-inline">
+                                            <input type="radio" :name="'answer['+i+']['+index+'][0]'" :value="5" required>Completamente de acuerdo
+                                        </label>
+                                    </li>
+                                    <li class="quiz-answer" data-quiz-answer="b">
+                                        <label class="radio-inline">
+                                            <input type="radio" :name="'answer['+i+']['+index+'][0]'" :value="4" required>De acuerdo
+                                        </label>
+                                    </li>
+                                    <li class="quiz-answer" data-quiz-answer="c">
+                                        <label class="radio-inline">
+                                            <input type="radio" :name="'answer['+i+']['+index+'][0]'" :value="3" required>Ni de acuerdo ni en desacuerdo
+                                        </label>
+                                    </li>
+                                    <li class="quiz-answer" data-quiz-answer="d">
+                                        <label class="radio-inline">
+                                            <input type="radio" :name="'answer['+i+']['+index+'][0]'" :value="2" required>En desacuerdo
+                                        </label>
+                                    </li>
+                                    <li class="quiz-answer" data-quiz-answer="e">
+                                        <label class="radio-inline">
+                                            <input type="radio" :name="'answer['+i+']['+index+'][0]'" :value="1" required>Completamente en desacuerdo
+                                        </label>
+                                    </li>
+                                    <input type="hidden" :name="'answer['+i+']['+index+'][1]'" :value="question.id">
+                                </ul>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="row" style="text-align: center;">
+                        <button type="button" class="btn btn-primary" @click="save">Guardar</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

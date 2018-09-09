@@ -1,0 +1,146 @@
+<template id="user_edit">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Editar usuario"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			 <page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+
+              <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="panel-body  ">
+                        <form id="user_edit" method="PUT" v-if="user_edit!=null" :action="'/user/'+user_edit.id">
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>Nombre completo</label>
+                              <input type="text" class="form-control" :value="user_edit.name" name="name" placeholder="Nombre completo">
+                            </div>
+                            <div class="col-md-4">
+                              <label>Email</label>
+                              <input type="text" class="form-control" :value="user_edit.email" name="email" placeholder="Email">
+                            </div>
+                            <div class="col-md-4">
+                              <label>Password</label>
+                              <input type="password" class="form-control" value="" name="password" placeholder="Password">
+                              <p class="text-muted">
+                                Si ingresas una password, se remplazara por la nueva.
+                              </p>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>Numero de identificacion</label>
+                              <input type="text" class="form-control" :value="user_edit.ci" name="ci" placeholder="Numero de identificacion">
+                            </div>
+                            <div class="col-md-4">
+                              <label>Codigo estudiante</label>
+                              <input type="text" class="form-control" :value="user_edit.codigo_estudiante" name="codigo_estudiante" placeholder="Codigo estudiante">
+                            </div>
+                            <div class="col-md-4">
+                              <label>Fecha de nacimiento</label>
+                              <input type="text" class="form-control" :value="user_edit.fecha_nacimiento" name="fecha_nacimiento" placeholder="Fecha de nacimiento">
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                              <label>Genero</label>
+                              <select name="genero" class="form-control" id="">
+                                <option :value="user_edit.genero" selected="true">{{user_edit.genero}}</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                              <label>Estrato</label>
+                              <input type="text" class="form-control" :value="user_edit.estrato" name="estrato" placeholder="Estrato">
+                            </div>
+
+                            <div class="col-md-4">
+                              <label>telefono</label>
+                              <input type="text" class="form-control" :value="user_edit.telefono" name="telefono" placeholder="Telefono">
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-4" v-if="institutions">
+                              <label>Institución</label>
+                              <select name="institution_id" class="form-control" >
+                                <option v-for="institution in institutions" v-bind:value="institution.id" :selected="user_edit.institution_id == institution.id">
+
+                                  {{ institution.name }}
+                                </option>
+                              </select>
+                            </div>
+
+                            <div class="col-md-4" v-if="programs">
+                              <label>Programa</label>
+                              <select name="program_id" class="form-control" >
+                                <option v-for="program in programs" v-bind:value="program.id" :selected="user_edit.program_id == program.id">
+                                  {{ program.name }}
+                                </option>
+                              </select>
+                            </div>
+                            <!-- <div class="col-md-4">
+                              <label>Programa</label>
+                              <input type="text" class="form-control" :value="user_edit.programa" name="programa" placeholder="Programa">
+                            </div> -->
+
+                            <div class="col-md-4">
+                              <label>semestre</label>
+                              <input type="text" class="form-control" :value="user_edit.semestre" name="semestre" placeholder="Semestre">
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                              <button type="button" class="btn btn-primary" @click="save">Completar solicitud</button>
+                            </div>
+                        </div>
+                        </div>
+
+                        </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>

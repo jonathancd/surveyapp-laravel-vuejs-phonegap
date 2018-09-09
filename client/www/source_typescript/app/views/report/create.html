@@ -1,0 +1,113 @@
+<template id="report_create">
+	<div>
+	<top_header :user="user"></top_header>
+	<breadcrumb title="Crear reportes"></breadcrumb>
+
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+			 <page_sidebar :user="user"></page_sidebar>
+
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+
+              <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div class="panel panel-white" style="margin-top: 10px;">
+                        <div class="panel-body  ">
+
+                        <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                              <label>Resultados general aplicando total </label>
+                              <button type="button" class="btn btn-primary form-control" @click="create('/report/general-by-total/1')">Generar</button>
+                              <!-- <button type="button" class="btn btn-primary form-control" @click="report_total">Generar</button> -->
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Resultados general total solo factores</label>
+                                <button type="button" class="btn btn-primary form-control" @click="create('/report/general-by-total/2')">Generar</button>
+                                <!-- <button type="button" class="btn btn-primary form-control" @click="report_by_factor">Generar</button> -->
+                            </div>
+
+                            <div class="col-md-4">
+                              <label>Resultados del formulario principal</label>
+                              <button type="button" class="btn btn-primary form-control" @click="create('/report/general-by-question')">Generar</button>
+                              <!-- <button type="button" class="btn btn-primary form-control" @click="report_by_questions">Generar</button> -->
+                            </div>
+
+                              
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                              <label>Estadisticas por factores</label>
+                              <button type="button" class="btn btn-primary form-control" @click="create('/report/by-factor')">Generar</button>
+                                <!-- <button type="button" class="btn btn-primary form-control" @click="report_by_factor">Generar</button> -->
+                            </div>
+
+
+                            <div class="col-md-4">
+                              <label>Instrumento Final - PDF</label>
+                              <button type="button" class="btn btn-primary form-control" @click="create('/report/final_instrument')">Generar</button>
+                              <!-- <button type="button" class="btn btn-primary form-control" @click="report_final_instrument">Generar</button> -->
+                            </div>
+
+                            <div class="col-md-4">
+                              <label>Avance por estudiante</label>
+                              <button type="button" class="btn btn-primary form-control" @click="create('/report/students-progress')">Generar</button>
+                              <!-- <button type="button" class="btn btn-primary form-control" @click="report_final_instrument">Generar</button> -->
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                              <label>Avance por instituciones</label>
+                              <button type="button" class="btn btn-primary form-control" @click="create('/report/students-institution-progress')">Generar</button>
+                            </div>
+
+
+                            <div class="col-md-4">
+                              <label>Avance por programas</label>
+                              <button type="button" class="btn btn-primary form-control" @click="create('/report/students-program-progress')">Generar</button>
+                            </div>
+
+                        </div>
+                        </div>
+
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+	<page_footer></page_footer>
+	</div>
+</template>
